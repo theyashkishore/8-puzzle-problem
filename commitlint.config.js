@@ -17,8 +17,8 @@ module.exports = {
       {
         rules: {
           'user-story-one-rule': ({ subject }) => {
-            const USER_STORY_ONE = /^US\d{7}$/ ;
-            const isValid = userStoryPattern.test(parsed.subject);
+            const userStoryPattern = /^US\d{7}$/ ;
+            const isValid = userStoryPattern.test(subject);
 
             if (isValid) {
                 return [true];
