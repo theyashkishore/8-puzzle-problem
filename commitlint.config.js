@@ -15,14 +15,15 @@ module.exports = {
     plugins: [
       {
         rules: {
-          'jira-rules/user-story-number': ({subject}) => {
-            const userStoryPattern = /^US\d{7}$/ ;
-            return [
-              subject.includes(userStoryPattern),
-              `Enter Valid Commit Message`,
-            ];
+          'jira-rules/user-story-number': ({ subject }) => {
+            const userStoryPattern = /^US\d{7}$/;
+            if (!subject) {
+              return [false, 'Subject is missing. Enter a valid commit message.'];
+            }
+            return [userStoryPattern.test(subject), 'Enter a valid Commit Message'];
           },
         },
       },
     ],
   };
+  
