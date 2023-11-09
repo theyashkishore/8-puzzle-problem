@@ -18,12 +18,12 @@ module.exports = {
         rules: {
           'user-story-one-rule': ({ subject }) => {
             const userStoryPattern = /^US\d{7}$/ ;
-            const isValid = userStoryPattern.test(subject);
+            const isValid = userStoryPattern.test(parsed.subject);
 
             if (isValid) {
                 return [true];
             }
-
+            console.debug("I was here");
             return [false, 'Invalid user story format. User story must be in the "US1234567" format.'];
             },
         
