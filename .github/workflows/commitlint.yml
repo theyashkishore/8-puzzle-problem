@@ -19,7 +19,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm install @commitlint/{plugin-name} @commitlint/rules
+        run: npm install @commitlint/config-conventional @commitlint/rules
 
       - name: Run Commitlint
         run: npx commitlint --from ${{ github.event.before }} --to ${{ github.event.after }}
