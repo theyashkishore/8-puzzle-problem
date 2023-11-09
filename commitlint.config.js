@@ -9,21 +9,20 @@
 // commitlint.config.js
 
 module.exports = {
+    extends: ['@commitlint/config-conventional'],
+    plugins: ['@commitlint/plugin-jira-rules'],
     rules: {
       'jira-rules/user-story-number': [2, 'always'],
-    },
-    plugins: [
-      {
-        rules: {
-          'jira-rules/user-story-number': ({ subject }) => {
-            const userStoryPattern = /^US1234567$/
-            if (!subject) {
-              return [false, 'Subject is missing. Enter a valid commit message.'];
-            }
-            return [userStoryPattern.test(subject), 'Enter a valid Commit Message'];
-          },
-        },
+      'user-story-format': (parsed, when, value) => {
+        const userStoryPattern = /^US\d{7}$/;
+        const isValid = userStoryPattern.test(parsed.subject);
+  
+        if (isValid) {
+          return [true];
+        }
+  
+        return [false, 'Invalid user story format. User story must be in the "US1234567" format.'];
       },
-    ],
+    },
   };
   
