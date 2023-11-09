@@ -16,7 +16,7 @@ module.exports = {
       {
         rules: {
           'jira-rules/user-story-number': ({ subject }) => {
-            const userStoryPattern = /^US\d{7}$/;
+            const userStoryPattern = US1234567;
             if (!subject) {
               return [false, 'Subject is missing. Enter a valid commit message.'];
             }
