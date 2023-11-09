@@ -18,7 +18,7 @@ module.exports = {
           'jira-rules/user-story-number': ({subject}) => {
             const userStoryPattern = /^US\d{7}$/ ;
             return [
-              subject.includes(HELLO_WORLD),
+              subject.includes(userStoryPattern),
               `Enter Valid Commit Message`,
             ];
           },
